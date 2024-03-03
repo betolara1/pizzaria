@@ -1,0 +1,16 @@
+<!-- menu.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+    <h1>Menu</h1>
+    <ul>
+        {% for pizza in pizzas %}
+            <li>{{ pizza.nome }} - R$ {{ pizza.preço }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
