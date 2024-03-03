@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+    <header>
+        <h1>Bem-vindo à Pizzaria Delícia</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Faça seu Pedido</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="welcome-text">
+            <h2>Sabor e qualidade em cada fatia!</h2>
+            <p>Na Pizzaria D'sboa, oferecemos uma variedade de deliciosas pizzas feitas com ingredientes frescos e selecionados.</p>
+            <p>Faça seu pedido agora e surpreenda-se!</p>
+        </div>
+    </div>
+{% endblock 'conteudo' %}
