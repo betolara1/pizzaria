@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/contatos.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+    <link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet" >
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+{% endblock %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <h1>Contato</h1>
+    <div class="contact-info">
+        {% for contato in contatos %}
+            <p class="contact-item" style="opacity: 0;"><span>Nome:</span> {{contato.nome}}</p>
+            <p class="contact-item" style="opacity: 0;"><span>E-mail:</span> {{ contato.email }}</p>
+            <p class="contact-item" style="opacity: 0;"><span>Telefone:</span> {{ contato.telefone }}</p>
+            <p class="contact-item" style="opacity: 0;"><span>Endereço:</span> {{ contato.endereco }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="map"></div>
+    <script src="{% static "homepage/js/mapa.js" %}"></script>
+</div>
+
+<script src="{% static "homepage/js/contatos.js" %}"></script>
+{% endblock 'conteudo' %}

@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/css/sobre.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+<header>
+    <h1>Sobre Nós</h1>
+</header>
+
+<div class="container">
+    <section id="descricao">
+        <h2>Quem somos</h2>
+        <p>Somos uma equipe dedicada à criação das pizzas mais gostosas do planeta e da galaxia para nossos clientes.</p>
+    </section>
+</div>
+{% endblock 'conteudo' %}
