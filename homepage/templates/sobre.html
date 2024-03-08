@@ -14,7 +14,11 @@
 <div class="container">
     <section id="descricao">
         <h2>Quem somos</h2>
-        <p>Somos uma equipe dedicada à criação das pizzas mais gostosas do planeta e da galaxia para nossos clientes.</p>
+        {% for s in sobre %}
+        <br>
+            <p>{{s.descricao}}</p>
+        {% endfor %}
+        
     </section>
 </div>
 {% endblock 'conteudo' %}

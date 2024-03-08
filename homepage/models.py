@@ -8,3 +8,6 @@ class Contato(models.Model):
 
     def __str__(self):
         return self.nome
+    
+class Sobre(models.Model):
+    descricao = models.TextField()
