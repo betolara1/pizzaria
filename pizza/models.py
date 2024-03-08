@@ -1,6 +1,20 @@
 from django.db import models
 
-class Pizza(models.Model):
+class Cardapio(models.Model):
+    imagem = models.ImageField(upload_to='imagens_pizzas/')
+    
+    def __str__(self):
+        return self.imagem
+
+class Pedido(models.Model):
+    cliente = models.CharField(max_length=100)
+    pizzas = models.ManyToManyField(Cardapio)
+    total = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return f"Pedido de {self.cliente}"
+
+class Tamanhos(models.Model):
     TAMANHOS = [
         ['Broto', '4 pedaços'],
         ['Pequena', '6 pedaços'],
@@ -8,19 +22,9 @@ class Pizza(models.Model):
         ['Grande', '12 pedaços'],
         ['Familia', '16 pedaços']
     ]
-
-    nome = models.CharField(max_length=100)
-    ingredientes = models.TextField()
     preço = models.DecimalField(max_digits=5, decimal_places=2)
     tamanho = models.CharField(max_length=10, choices=TAMANHOS)
 
     def __str__(self):
-        return self.nome
-
-class Pedido(models.Model):
-    cliente = models.CharField(max_length=100)
-    pizzas = models.ManyToManyField(Pizza)
-    total = models.DecimalField(max_digits=6, decimal_places=2)
-
-    def __str__(self):
-        return f"Pedido de {self.cliente}"
+        return self.tamanho
+    

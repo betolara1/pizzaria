@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'pizza/css/cardapio.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <h1>Cardapio</h1>
+    <div class="cardapio-info">
+        {% for pizza in pizzas %}
+            <div>{{ pizza.nome }}
+                <li>{{ pizza.ingredientes }}</li>
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+    
+{% endblock 'conteudo' %}

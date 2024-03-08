@@ -1,9 +1,8 @@
 from django.shortcuts import render
-from .models import Pizza
+from .models import *
 
-def menu(request):
+def cardapio(request):
     if request.method == "GET":
         pizzas = Pizza.objects.all()
-        return render(request, 'menu.html', {'pizzas': pizzas})
+        return render(request, 'cardapio.html', {'pizzas': pizzas})
 
-# Outras visualizações como visualização de pedido, adição de item ao pedido, etc.
