@@ -10,12 +10,9 @@
 <div class="container">
     <h1>Cardapio</h1>
     <div class="cardapio-info">
-        {% for pizza in pizzas %}
-            <div>{{ pizza.nome }}
-                <li>{{ pizza.ingredientes }}</li>
-            </div>
+        {% for c in cardapios %}
+            <img src="{{ c.imagem.url }}" alt="">
         {% endfor %}
-
     </div>
 </div>
     

@@ -3,6 +3,6 @@ from .models import *
 
 def cardapio(request):
     if request.method == "GET":
-        pizzas = Pizza.objects.all()
-        return render(request, 'cardapio.html', {'pizzas': pizzas})
+        cardapios = Cardapio.objects.all()
+        return render(request, 'cardapio.html', {'cardapios': cardapios})
 

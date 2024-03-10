@@ -4,7 +4,7 @@ class Cardapio(models.Model):
     imagem = models.ImageField(upload_to='imagens_pizzas/')
     
     def __str__(self):
-        return self.imagem
+        return self.imagem.name
 
 class Pedido(models.Model):
     cliente = models.CharField(max_length=100)

@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'usuarios/css/cadastro.css' %}" rel="stylesheet">
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <h2>Cadastro de Usuários</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Nome de usuário:</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Cadastrar</button>
+    </form>
+</div>
+{% endblock 'conteudo' %}
