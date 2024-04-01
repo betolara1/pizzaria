@@ -27,7 +27,7 @@ class Pedidos(models.Model):
     nome = models.CharField(max_length=50, null=False)
     tamanho = models.CharField(max_length=1, choices=TAMANHO)
     sabor = models.ForeignKey(Sabores, on_delete=models.DO_NOTHING)
-    #observacao = models.CharField(max_length=100)
+    observacao = models.CharField(max_length=100, null=True)
     
     def __str__(self):
         return self.nome

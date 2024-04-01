@@ -19,7 +19,7 @@
     {% endif %}
 
     <br>
-    <form action="{% url "login" %}" method="POST">{% csrf_token %}
+    <form action="{% url "pedido" %}" method="POST">{% csrf_token %}
         <label>Nome</label>
         <input type="text" class="input-form" name="nome" id="">
         <br>
@@ -35,20 +35,22 @@
         </select>
         <br>
         <br>
-        
-        <label>Escolha os sabores</label>
-        {% for s in sabores %}
-            <input type="checkbox" id="opcao1" name="opcao1">
-            <label for="opcao1">{{ s.nome }}</label>
-            <br>
-        {% endfor %}
+
+        <div class='sabores'>
+            <label>Escolha os sabores</label>
+            {% for s in sabores %}
+                <input type="checkbox" value="{{ s.nome }}" name="sabores" id="{{s.id}}">
+                <label for="{{ s.nome }}">{{ s.nome }}</label>
+                <br>
+            {% endfor %}
+        </div>
         
         
         <br>
         <br>
         <br>
 
-        <input type="submit" value="Enviar Pedido" class="btn-cadastro">
+        <input type="submit" value="Fechar Pedido" class="btn-cadastro">
 
         <br>
         <br>

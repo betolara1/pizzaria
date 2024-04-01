@@ -50,14 +50,13 @@ def login(request):
             
             if user:
                 auth.login(request, user)
-                messages.add_message(request, constants.SUCCESS, 'Logado!')
                 return redirect('/')
             else:
                 messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidas')
                 return redirect('/usuarios/login')
  
     else:
-        return render(request, 'logado.html')    
+        return render(request, 'logado.html')
 
 def logout(request):
     auth.logout(request)
