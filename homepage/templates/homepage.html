@@ -12,10 +12,23 @@
     <nav>
         <ul>
             <li><a href="{% url "cardapio" %}">Cardapio</a></li>
-            <li><a href="#">Faça seu Pedido</a></li>
+            <li><a href="{% url "pedido" %}">Faça seu Pedido</a></li>
             <li><a href="{% url "contatos" %}">Contato</a></li>
         </ul>
     </nav>
+    <br>
+    <br>
+    <ul>
+        <li>
+            {% if request.user.is_authenticated %}
+                <label>Seja bem vindo, {{ request.user.username }}</label>
+                <a href='{% url "logout" %}'>Clique aqui para logout</a>
+            {% else %}
+                <a href='{% url "login" %}'>Você não está logado. Clique aqui para Logar</a>
+            {% endif %}
+        </li>
+    </ul>
+    <br>
     <div class="container">
         <div class="welcome-text">
             <h2>Sabor e qualidade em cada fatia!</h2>

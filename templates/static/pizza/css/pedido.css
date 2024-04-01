@@ -63,3 +63,8 @@ button:hover {
 .btn-cadastro:hover {
     background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
 }
+
+label {
+    display: inline-block;
+    margin-right: 10px; /* Espaçamento entre o label e o checkbox */
+  }

@@ -1,30 +1,33 @@
 from django.db import models
 
+
 class Cardapio(models.Model):
     imagem = models.ImageField(upload_to='imagens_pizzas/')
     
     def __str__(self):
         return self.imagem.name
 
-class Pedido(models.Model):
-    cliente = models.CharField(max_length=100)
-    pizzas = models.ManyToManyField(Cardapio)
-    total = models.DecimalField(max_digits=6, decimal_places=2)
+
+class Sabores(models.Model):
+    nome = models.CharField(max_length = 50)
 
     def __str__(self):
-        return f"Pedido de {self.cliente}"
+        return self.nome
 
-class Tamanhos(models.Model):
-    TAMANHOS = [
-        ['Broto', '4 pedaços'],
-        ['Pequena', '6 pedaços'],
-        ['Média', '8 pedaços'],
-        ['Grande', '12 pedaços'],
-        ['Familia', '16 pedaços']
-    ]
-    preço = models.DecimalField(max_digits=5, decimal_places=2)
-    tamanho = models.CharField(max_length=10, choices=TAMANHOS)
 
-    def __str__(self):
-        return self.tamanho
+class Pedidos(models.Model):
+    TAMANHO = (
+        ('B', 'Broto'),
+        ('P', 'Pequena'),
+        ('M', 'Média'),
+        ('G', 'Grande'),
+        ('F', 'Família'),
+    )
+
+    nome = models.CharField(max_length=50, null=False)
+    tamanho = models.CharField(max_length=1, choices=TAMANHO)
+    sabor = models.ForeignKey(Sabores, on_delete=models.DO_NOTHING)
+    #observacao = models.CharField(max_length=100)
     
+    def __str__(self):
+        return self.nome

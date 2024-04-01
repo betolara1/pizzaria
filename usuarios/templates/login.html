@@ -8,7 +8,7 @@
 
 {% block 'conteudo' %}
 <div class="container">
-    <h1>Cadastro</h1>
+    <h1>Login</h1>
     {% if messages %}
         {% for message in messages %}
             <section class='alert {{message.tags}}'>
@@ -16,9 +16,9 @@
             </section>
         {% endfor %}
     {% endif %}
-                    
-    <form action="{% url "cadastro" %}" method="POST">{% csrf_token %}
-        <label>Username</label>
+    <br>
+    <form action="{% url "login" %}" method="POST">{% csrf_token %}
+        <label>Usuario</label>
         <input type="text" class="input-form" name="username" id="">
         <br>
         <br>
@@ -26,16 +26,8 @@
         <input type="password" class="input-form" name="senha" id="">
         <br>
         <br>
-        <label>Confirmar senha</label>
-        <input type="password" class="input-form" name="confirmar_senha" id="">
-        <br>
-        <br>
-        <label>E-mail</label>
-        <input type="text" class="input-form" name="email" id="">
-        <br>
-        <br>
-        <input type="submit" value="Cadastrar" class="btn-cadastro">
-        <a href="{% url 'login' %}" class='btn-cadastro'>Voltar</a>
+        <input type="submit" value="Entrar" class="btn-cadastro">
+        <a href="{% url 'cadastro' %}" class="btn-cadastro">ou clique aqui para se cadastrar</a>
         <br>
         <br>
         <br>

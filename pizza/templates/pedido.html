@@ -1,0 +1,61 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'pizza/css/pedido.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <h1>Pedidos</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <section class='alert {{message.tags}}'>
+                {{message}}
+            </section>
+        {% endfor %}
+    {% endif %}
+
+    <br>
+    <form action="{% url "login" %}" method="POST">{% csrf_token %}
+        <label>Nome</label>
+        <input type="text" class="input-form" name="nome" id="">
+        <br>
+        <br>
+
+        <label for="">Tamanho</label>
+        <select name="tamanho" class="input-form">
+            {% for t in tamanho %}
+                <option value='{{t.0}}'>
+                    {{t.1}}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        
+        <label>Escolha os sabores</label>
+        {% for s in sabores %}
+            <input type="checkbox" id="opcao1" name="opcao1">
+            <label for="opcao1">{{ s.nome }}</label>
+            <br>
+        {% endfor %}
+        
+        
+        <br>
+        <br>
+        <br>
+
+        <input type="submit" value="Enviar Pedido" class="btn-cadastro">
+
+        <br>
+        <br>
+        <br>
+        <br>
+    </form>
+</div>
+
+    
+{% endblock 'conteudo' %}

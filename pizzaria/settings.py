@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-p+c*+k4t@%ne99s#wagzh2ujxy+ie*&po=)qa&=i*)%bs=!^bk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pizza',
     'homepage',
+    'usuarios',
 ]
 
 MIDDLEWARE = [

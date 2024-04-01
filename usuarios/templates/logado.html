@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'usuarios/css/cadastro.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <h1>Você já está logado</h1>
+    <ul>
+        <li>
+            {% if request.user.is_authenticated %}
+                <label>Seja bem vindo, {{ request.user.username }}</label>
+                <a href='{% url "logout" %}'>Clique aqui para logout</a>
+            {% endif %}
+        </li>
+    </ul>
+    
+{% endblock 'conteudo' %}

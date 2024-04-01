@@ -3,5 +3,5 @@ from .models import *
 
 
 admin.site.register(Cardapio)
-admin.site.register(Pedido)
-admin.site.register(Tamanhos)
+admin.site.register(Pedidos)
+admin.site.register(Sabores)

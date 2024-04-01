@@ -3,7 +3,9 @@
         <ul>
             <li><a href="{% url "homepage" %}">Página Inicial</a></li>
             <li><a href="{% url "cardapio" %}">Cardapio</a></li>
-            <li><a href="#">Pedidos</a></li>
+            <li><a href="{% url "login" %}">Login</a></li>
+            <li><a href="{% url "cadastro" %}">Cadastro</a></li>
+            <li><a href="{% url "pedido" %}">Pedidos</a></li>
             <li><a href="{% url "sobre" %}">Sobre</a></li>
             <li><a href="{% url "contatos" %}">Contato</a></li>
         </ul>
