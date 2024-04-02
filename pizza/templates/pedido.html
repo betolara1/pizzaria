@@ -8,7 +8,7 @@
 
 {% block 'conteudo' %}
 <div class="container">
-    <h1>Pedidos</h1>
+    <h1>Pedido</h1>
 
     {% if messages %}
         {% for message in messages %}
@@ -24,6 +24,7 @@
         <input type="text" class="input-form" name="nome" id="">
         <br>
         <br>
+        <br>
 
         <label for="">Tamanho</label>
         <select name="tamanho" class="input-form">
@@ -35,15 +36,17 @@
         </select>
         <br>
         <br>
+        <br>
 
-        <div class='sabores'>
-            <label>Escolha os sabores</label>
-            {% for s in sabores %}
-                <input type="checkbox" value="{{ s.nome }}" name="sabores" id="{{s.id}}">
-                <label for="{{ s.nome }}">{{ s.nome }}</label>
-                <br>
-            {% endfor %}
-        </div>
+       
+        <label>Escolha os sabores</label>
+        <br>
+        {% for s in sabores %}
+            <input type="checkbox" value="{{ s.id }}" name="sabores" id="{{s.id}}">
+            <label for="{{ s.id }}">{{ s.nome }}</label>
+            <br>
+        {% endfor %}
+        
         
         
         <br>

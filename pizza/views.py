@@ -23,15 +23,22 @@ def pedido(request):
     elif request.method == 'POST':
         nome = request.POST.get('nome')
         tamanho = request.POST.get('tamanho')
-        sabores = request.POST.get('sabores')
+        observacao = request.POST.get('observacao')
+        sabores_ids = request.POST.getlist('sabores')
+
+        print("IDs dos sabores do formulário:", sabores_ids)
 
         pedido = Pedidos(
             nome=nome,
             tamanho=tamanho,
-            sabores=sabores,
+            observacao=observacao,
         )
 
         pedido.save()
+
+        for sabor_id in sabores_ids:
+            sabor = Sabores.objects.get(id=int(sabor_id))  # Converta o ID para inteiro
+            pedido.sabores.add(sabor)
 
         messages.add_message(
             request, constants.SUCCESS, 'Pedido realizado com sucesso'
