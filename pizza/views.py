@@ -37,7 +37,7 @@ def pedido(request):
         pedido.save()
 
         for sabor_id in sabores_ids:
-            sabor = Sabores.objects.get(id=int(sabor_id))  # Converta o ID para inteiro
+            sabor = Sabores.objects.get(id=int(sabor_id))
             pedido.sabores.add(sabor)
 
         messages.add_message(
