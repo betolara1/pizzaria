@@ -1,0 +1,19 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block 'cabecalho' %}
+    <link href="{% static 'homepage/css/homepage.css' %}" rel="stylesheet">
+    <link href="{% static 'pedidos/css/cardapio.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block 'conteudo' %}
+<div class="container">
+    <h1>Cardapio</h1>
+    <div class="cardapio-info">
+        {% for c in cardapios %}
+            <img src="{{ c.imagem.url }}" alt="">
+        {% endfor %}
+    </div>
+</div>
+    
+{% endblock 'conteudo' %}
