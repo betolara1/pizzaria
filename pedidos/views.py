@@ -47,11 +47,13 @@ def pedido(request):
         return redirect('/pedidos/pedido')
     
 
-def meuspedidos(request, id):
+def meuspedidos(request):
     if not request.user.is_authenticated:
         return redirect('/usuarios/login')
     
     if request.method == "GET":
+        
+
         return render(request, 'meuspedidos.html')
     
     elif request.method == 'POST':

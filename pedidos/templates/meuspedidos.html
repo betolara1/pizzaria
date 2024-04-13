@@ -19,53 +19,29 @@
     {% endif %}
 
     <br>
-    <form action="{% url "pedido" %}" method="POST">{% csrf_token %}
-        <label>Nome</label>
-        {% if request.user.is_authenticated %}
-            <label>{{ request.user.username }}</label>
-        {% endif %}
-        <br>
-        <br>
-        <br>
+    <div class="box-listar">
+        <table>
+            <thead>
+              <tr>
+                <th scope="col">Desafio</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Dificuldade</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for desafio in desafios %}
+                    <tr class="linha">
+                        <th><a href="{% url "desafio" desafio.id %}">{{desafio.id}}</a></th>
+                        <td>{{desafio.titulo}}</td>
+                        <td>{{desafio.get_dificuldade_display}}</td>
+                        <td>{{desafio.status}}</td>
+                    </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
 
-        <label for="">Tamanho</label>
-        <select name="tamanho" class="input-form">
-            {% for t in tamanho %}
-                <option value='{{t.0}}'>
-                    {{t.1}}
-                </option>
-            {% endfor %}
-        </select>
-        <br>
-        <br>
-        <br>
-
-       
-        <label>Escolha os sabores</label>
-        <br>
-        {% for s in sabores %}
-            <input type="checkbox" value="{{ s.id }}" name="sabores" id="{{s.id}}">
-            <label for="{{ s.id }}">{{ s.nome }}</label>
-            <br>
-        {% endfor %}
-        <br>
-        <br>
-        <br>
-        
-        <label for="comment">Observação:</label><br>
-        <textarea id="observacao" name="observacao" rows="4" cols="50" required></textarea><br>
-        
-        <br>
-        <br>
-        <br>
-
-        <input type="submit" value="Fechar Pedido" class="btn-cadastro">
-
-        <br>
-        <br>
-        <br>
-        <br>
-    </form>
 </div>
 
     
