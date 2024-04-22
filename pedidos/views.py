@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib import messages
 from django.contrib.messages import constants
@@ -15,9 +16,13 @@ def pedido(request):
     
     if request.method == 'GET':
         sabores = Sabores.objects.all()
-        tamanho = Pedidos.TAMANHO
+        tamanho = Preco.TAMANHO
+        preco = Preco.objects.all()
 
-        return render(request, 'pedido.html', { 'sabores' : sabores, 'tamanho': tamanho, })
+        tamanho_selecionado = request.GET.get('tamanho')
+        #preco = Preco.objects.get(tamanho=tamanho_selecionado).valor
+
+        return render(request, 'pedido.html', { 'sabores' : sabores, 'tamanho': tamanho, 'preco' : preco, })
     
 
     elif request.method == 'POST':
@@ -25,6 +30,7 @@ def pedido(request):
         tamanho = request.POST.get('tamanho')
         observacao = request.POST.get('observacao')
         sabores_ids = request.POST.getlist('sabores')
+        preco = request.POST.get('preco')
 
         usuario = request.user
 
@@ -33,6 +39,8 @@ def pedido(request):
             tamanho=tamanho,
             observacao=observacao,
             usuario=usuario,
+            status='1',
+            preco = preco,
         )
 
         pedido.save()
@@ -52,9 +60,6 @@ def meuspedidos(request):
         return redirect('/usuarios/login')
     
     if request.method == "GET":
-        
+        pedido = Pedidos.objects.all()
 
-        return render(request, 'meuspedidos.html')
-    
-    elif request.method == 'POST':
-        pass
+        return render(request, 'meuspedidos.html', {'pedido' : pedido, })

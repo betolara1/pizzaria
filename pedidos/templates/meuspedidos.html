@@ -23,19 +23,20 @@
         <table>
             <thead>
               <tr>
-                <th scope="col">Desafio</th>
-                <th scope="col">Titulo</th>
-                <th scope="col">Dificuldade</th>
+                <th scope="col">Pedido</th>
+                <th scope="col">Tamanho</th>
+                <th scope="col">Valor</th>
                 <th scope="col">Status</th>
+
               </tr>
             </thead>
             <tbody>
-                {% for desafio in desafios %}
+                {% for pe in pedido %}
                     <tr class="linha">
-                        <th><a href="{% url "desafio" desafio.id %}">{{desafio.id}}</a></th>
-                        <td>{{desafio.titulo}}</td>
-                        <td>{{desafio.get_dificuldade_display}}</td>
-                        <td>{{desafio.status}}</td>
+                        <td>{{pe.id}}</td>
+                        <td>{{pe.get_tamanho_display}}</td>
+                        <td>{{pe.get_tamanho_display}}</td>
+                        <td>{{pe.get_status_display}}</td>
                     </tr>
               {% endfor %}
             </tbody>

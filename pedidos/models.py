@@ -13,9 +13,9 @@ class Sabores(models.Model):
 
     def __str__(self):
         return self.nome
+    
 
-
-class Pedidos(models.Model):
+class Preco(models.Model):
     TAMANHO = (
         ('B', 'Broto'),
         ('P', 'Pequena'),
@@ -24,11 +24,28 @@ class Pedidos(models.Model):
         ('F', 'Família'),
     )
 
-    nome = models.CharField(max_length=50, null=False)
     tamanho = models.CharField(max_length=1, choices=TAMANHO)
+    preco = models.FloatField()
+
+    def __str__(self):
+        return self.tamanho
+    
+    
+class Pedidos(models.Model):
+    STATUS_PEDIDO = (
+        ('1', 'Pendente'),
+        ('2', 'Em Preparo'),
+        ('3', 'Pronto'),
+        ('4', 'Cancelado'),
+    )
+
+    nome = models.CharField(max_length=50, null=False)
+    tamanho = models.ManyToManyField(Preco)
     sabores = models.ManyToManyField(Sabores)
     observacao = models.CharField(max_length=100, null=True)
     usuario = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True)
+    status = models.CharField(max_length=1, choices=STATUS_PEDIDO, null=True)
+    preco = models.FloatField(null=True)
     
     def __str__(self):
         return self.nome
