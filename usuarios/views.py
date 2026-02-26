@@ -15,13 +15,13 @@ def cadastro(request):
 
         if not senha == confirmar_senha:
             messages.add_message(request, constants.ERROR, 'As senhas não são iguais')
-            return redirect('/usuarios/cadastro')
+            return redirect('/usuarios/cadastro/')
         
         user = User.objects.filter(username=username)
 
         if user.exists():
             messages.add_message(request, constants.ERROR, 'Usuário já existente')
-            return redirect('/usuarios/cadastro')
+            return redirect('/usuarios/cadastro/')
         
         try:
             user = User.objects.create_user(
@@ -31,10 +31,10 @@ def cadastro(request):
             )
 
             messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso')
-            return redirect('/usuarios/login')
+            return redirect('/usuarios/login/')
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
-            return redirect('/usuarios/cadastro')
+            return redirect('/usuarios/cadastro/')
         
 
 def login(request):
@@ -53,7 +53,7 @@ def login(request):
                 return redirect('/')
             else:
                 messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidas')
-                return redirect('/usuarios/login')
+                return redirect('/usuarios/login/')
  
     else:
         return render(request, 'logado.html')

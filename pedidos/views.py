@@ -12,7 +12,7 @@ def cardapio(request):
     
 def pedido(request):
     if not request.user.is_authenticated:
-        return redirect('/usuarios/login')
+        return redirect('/usuarios/login/')
     
     sabores = Sabores.objects.all()
     tamanho = Preco.TAMANHO
@@ -59,13 +59,13 @@ def fecharpedido(request):
             request, constants.SUCCESS, 'Pedido realizado com sucesso'
         )
 
-        return redirect('/pedidos/pedido')
+        return redirect('/pedidos/pedido/')
 
 
 @login_required
 def meuspedidos(request):
     if not request.user.is_authenticated:
-        return redirect('/usuarios/login')
+        return redirect('/usuarios/login/')
     
     if request.method == "GET":
         pedido = Pedidos.objects.all()
